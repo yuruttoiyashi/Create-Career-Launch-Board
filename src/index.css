@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+.input {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+  background: white;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.input:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 4px #dbeafe;
+}
+
+.textarea {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+  background: white;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.textarea:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 4px #dbeafe;
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  header,
+  aside,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  main {
+    display: block !important;
+  }
+
+  section {
+    box-shadow: none !important;
+  }
+}
