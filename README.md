@@ -1,73 +1,216 @@
-# React + TypeScript + Vite
+# Career Launch Board
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 概要
 
-Currently, two official plugins are available:
+Career Launch Board は、転職活動における求人応募・ポートフォリオ提出・面接準備・タスク管理を一元化するためのWebアプリケーションです。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+応募先企業ごとに、求人情報、応募ステータス、提出予定のポートフォリオ、志望動機、自己PR、面接メモ、応募タスクを管理できます。
 
-## React Compiler
+単なる求人管理アプリではなく、エンジニア転職に必要な情報を整理し、応募戦略を立てやすくすることを目的として制作しました。
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 制作目的
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+転職活動では、複数の求人に対して以下のような情報を同時に管理する必要があります。
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- 応募先企業の情報
+- 求人ごとの必須スキル・歓迎スキル
+- 応募ステータス
+- 提出するポートフォリオ
+- 志望動機・自己PR
+- 面接日程
+- 逆質問
+- 応募前後のタスク
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+これらを個別のメモやスプレッドシートで管理すると、情報が分散しやすく、準備漏れが発生しやすくなります。
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+本アプリでは、求人ごとの情報を1画面で整理し、転職活動の進捗を可視化できるようにしました。
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 主な機能
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 1. ダッシュボード機能
+
+登録した求人情報をもとに、現在の応募状況を一覧で確認できます。
+
+- 登録求人数
+- 応募済み件数
+- 書類選考中件数
+- 面接予定件数
+- 内定候補件数
+- 未完了タスク数
+
+転職活動全体の進捗をひと目で把握できます。
+
+---
+
+### 2. 求人管理機能
+
+応募先ごとに、基本情報を登録・編集できます。
+
+- 企業名
+- 職種
+- 雇用形態
+- 勤務地
+- 給与
+- 勤務形態
+- 求人URL
+- 障害者雇用求人かどうか
+- 応募ステータス
+- 優先度
+- 必須スキル
+- 歓迎スキル
+
+求人ごとの条件や応募状況を整理し、比較しやすい構成にしています。
+
+---
+
+### 3. 応募ステータス管理
+
+求人ごとに現在の進捗を管理できます。
+
+対応ステータスは以下の通りです。
+
+- 準備中
+- 応募済み
+- 書類選考中
+- 面接予定
+- 内定候補
+- 不採用
+- 保留
+
+ステータスごとに色分けを行い、視覚的に状況を把握しやすくしています。
+
+---
+
+### 4. ポートフォリオ提出管理
+
+求人ごとに、提出するポートフォリオを選択できます。
+
+登録済みのポートフォリオ例：
+
+- LogiRoute AI
+- Phyz Ops Vision
+- Phyz Crew Planner
+- Mitsumori Flow
+- Keiri Assist AI
+- Biz Insight AI
+- Work Balance Vision
+- New Life Planner
+
+各アプリについて、提出理由を記録できるため、企業ごとにどの実績をアピールするか整理できます。
+
+---
+
+### 5. 志望動機・自己PR管理
+
+応募先ごとに以下の内容を保存できます。
+
+- 志望動機
+- 自己PR
+- 配慮事項
+- 自由メモ
+
+企業ごとに内容を分けて管理できるため、応募書類や面接準備に活用できます。
+
+---
+
+### 6. 面接準備機能
+
+面接に向けた情報を整理できます。
+
+- 面接日時
+- 面接で話す内容
+- 逆質問
+- 企業研究メモ
+
+面接前に確認すべき情報をまとめておけるため、準備漏れを防ぎやすくなります。
+
+---
+
+### 7. 応募タスク管理
+
+求人ごとに応募準備タスクを登録できます。
+
+例：
+
+- 求人内容を確認する
+- 提出するポートフォリオを選ぶ
+- 志望動機を作成する
+- 職務経歴書を修正する
+- GitHub / READMEを確認する
+- 面接回答を整理する
+
+タスクにはステータスと期限を設定できます。
+
+---
+
+### 8. A4印刷用シート
+
+応募先ごとに、A4形式の提出準備シートを印刷できます。
+
+印刷シートには以下の内容を表示します。
+
+- 企業名
+- 職種
+- 応募ステータス
+- 優先度
+- 勤務条件
+- 志望動機
+- 自己PR
+- 配慮事項
+- 提出予定ポートフォリオ
+- 未完了タスク
+
+面接前の確認資料や、応募準備用の整理資料として活用できます。
+
+---
+
+## 使用技術
+
+| 分類 | 使用技術 |
+|---|---|
+| フロントエンド | React |
+| 開発環境 | Vite |
+| 言語 | TypeScript |
+| スタイリング | Tailwind CSS |
+| 状態管理 | React Hooks |
+| データ保存 | localStorage |
+| デプロイ | Vercel 想定 |
+
+---
+
+## 技術的に意識した点
+
+### コンポーネント分割
+
+`App.tsx` にすべての処理を詰め込まず、機能ごとにコンポーネントを分割しました。
+
+主な構成：
+
+```txt
+src/
+  components/
+    Header.tsx
+    Dashboard.tsx
+    JobForm.tsx
+    JobList.tsx
+    JobDetail.tsx
+    PortfolioPanel.tsx
+    TaskPanel.tsx
+    InterviewPanel.tsx
+    PrintSheet.tsx
+
+  data/
+    defaultPortfolios.ts
+
+  hooks/
+    useLocalStorage.ts
+
+  types/
+    career.ts
+
+  utils/
+    careerUtils.ts
