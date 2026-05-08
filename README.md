@@ -1,5 +1,9 @@
 # Career Launch Board
 
+## アプリURL
+
+https://career-launch-board.vercel.app/
+
 ## 概要
 
 Career Launch Board は、転職活動における求人応募・ポートフォリオ提出・面接準備・タスク管理を一元化するためのWebアプリケーションです。
